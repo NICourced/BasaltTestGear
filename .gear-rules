@@ -1,3 +1,2 @@
 spec: sdl2-examples.spec
-git
-tar.gz: https://github.com/xyproto/sdl2-examples.git
+tar.gz: sdl2-examples
