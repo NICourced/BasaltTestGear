@@ -1,0 +1,3 @@
+[submodule "sdl2-examples"]
+	path = sdl2-examples
+	url = https://github.com/xyproto/sdl2-examples.git
