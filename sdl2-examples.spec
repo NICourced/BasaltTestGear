@@ -19,7 +19,7 @@ EXAMPLES
 
 %prep
 %setup
-%patch0 -p1
+%autopatch
 cp %SOURCE1 worklist
 
 
