@@ -8,6 +8,7 @@ Group: Game
 URL: https://github.com/xyproto/sdl2-examples
 Source0: %{name}-%{version}.tar.gz
 Source1: mypatch.patch
+Patch1: mypatch.patch
 Source2: worklist
 BuildRequires: gcc gcc-c++ libSDL2-devel libSDL2_mixer-devel libSDL2_net-devel libSDL2_image-devel libSDL2_ttf-devel golang nasm pkg-config mono-core dmd dotnet go clang python3-module-sdl2 zig
 BuildRequires: sbcl lua5.3 lua5.3-devel lua5.3-luarocks
@@ -20,7 +21,7 @@ EXAMPLES
 %prep
 %setup -q
 %patch1 -p1
-cp %SOURCE1 worklist
+cp %SOURCE2 worklist
 
 
 %build
