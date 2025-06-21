@@ -1,4 +1,4 @@
 spec: sdl2-examples.spec
 tar.gz: sdl2-examples
-file: worklist
-file: mypatch.patch
+copy: worklist
+copy: mypatch.patch
