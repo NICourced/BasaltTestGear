@@ -7,20 +7,25 @@ License: GPLv2
 Group: Game
 URL: https://github.com/xyproto/sdl2-examples
 Source0: %{name}-%{version}.tar.gz
-BuildRequires: gcc gcc-c++ libSDL2-devel libSDL2_mixer-devel libSDL2_net-devel libSDL2_image-devel libSDL2_ttf-devel golang nasm pkg-config mono-core dmd freebasic dotnet go java kotlin clang fpc python3-module-sdl2 zig
+Patch0: mypatch.patch
+Source1: worklist
+BuildRequires: gcc gcc-c++ libSDL2-devel libSDL2_mixer-devel libSDL2_net-devel libSDL2_image-devel libSDL2_ttf-devel golang nasm pkg-config mono-core dmd dotnet go clang python3-module-sdl2 zig
 BuildRequires: sbcl lua5.3 lua5.3-devel lua5.3-luarocks
 BuildRequires: desktop-file-utils
-Requires: icon-theme-hicolor
+Requires: icon-theme-hicolor lua-sdl2
 
 %description
 EXAMPLES
 
 %prep
 %setup -q
+%patch0 -p1
+cp %SOURCE1 worklist
+
 
 %build
 
-for dir in *; do
+for dir in $(cat worklist); do
     [ -d "$dir" ] || continue
     cd "$dir"
     if [ -f Makefile ]; then
