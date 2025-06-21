@@ -18,7 +18,7 @@ Requires: icon-theme-hicolor lua-sdl2
 EXAMPLES
 
 %prep
-%setup -q
+%setup
 %patch0 -p1
 cp %SOURCE1 worklist
 
