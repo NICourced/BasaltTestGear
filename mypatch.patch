@@ -1,0 +1,59 @@
+diff --git a/bench.sh b/bench.sh
+old mode 100755
+new mode 100644
+diff --git a/python/Makefile b/python/Makefile
+index 5e360bb..49867e7 100644
+--- a/python/Makefile
++++ b/python/Makefile
+@@ -8,7 +8,7 @@ msg:
+ 	@echo '--- Python ---'
+ 
+ run: msg main.py
+-	time python main.py
++	time python3 main.py
+ 
+ clean:
+ 	@# Nothing to clean
+diff --git a/python/main.py b/python/main.py
+old mode 100755
+new mode 100644
+diff --git a/zig/main.zig b/zig/main.zig
+index b5027c0..86f8aea 100644
+--- a/zig/main.zig
++++ b/zig/main.zig
+@@ -11,7 +11,7 @@ pub fn main() !u8 {
+     defer sdl2.SDL_Quit();
+ 
+     // Create a SDL_Window
+-    var win: ?*sdl2.SDL_Window = sdl2.SDL_CreateWindow("Hello World!", 100, 100, 620, 387, sdl2.SDL_WINDOW_SHOWN);
++    const win: ?*sdl2.SDL_Window = sdl2.SDL_CreateWindow("Hello World!", 100, 100, 620, 387, sdl2.SDL_WINDOW_SHOWN);
+     if (win == null) {
+         print("SDL_CreateWindow Error: {s}\n", .{sdl2.SDL_GetError()});
+         return 1;
+@@ -19,7 +19,7 @@ pub fn main() !u8 {
+     defer sdl2.SDL_DestroyWindow(win);
+ 
+     // Create a SDL_Renderer
+-    var ren: ?*sdl2.SDL_Renderer = sdl2.SDL_CreateRenderer(win, -1, sdl2.SDL_RENDERER_ACCELERATED | sdl2.SDL_RENDERER_PRESENTVSYNC);
++    const ren: ?*sdl2.SDL_Renderer = sdl2.SDL_CreateRenderer(win, -1, sdl2.SDL_RENDERER_ACCELERATED | sdl2.SDL_RENDERER_PRESENTVSYNC);
+     if (ren == null) {
+         print("SDL_CreateRenderer Error: {s}\n", .{sdl2.SDL_GetError()});
+         return 1;
+@@ -27,7 +27,7 @@ pub fn main() !u8 {
+     defer sdl2.SDL_DestroyRenderer(ren);
+ 
+     // Load the image as an SDL_Surface
+-    var bmp: ?*sdl2.SDL_Surface = sdl2.SDL_LoadBMP("../img/grumpy-cat.bmp");
++    const bmp: ?*sdl2.SDL_Surface = sdl2.SDL_LoadBMP("../img/grumpy-cat.bmp");
+     if (bmp == null) {
+         print("SDL_LoadBMP Error: {s}\n", .{sdl2.SDL_GetError()});
+         return 1;
+@@ -35,7 +35,7 @@ pub fn main() !u8 {
+     defer sdl2.SDL_FreeSurface(bmp);
+ 
+     // Create a SDL_Texture from the SDL_Surface
+-    var tex: ?*sdl2.SDL_Texture = sdl2.SDL_CreateTextureFromSurface(ren, bmp);
++    const tex: ?*sdl2.SDL_Texture = sdl2.SDL_CreateTextureFromSurface(ren, bmp);
+     if (tex == null) {
+         print("SDL_CreateTextureFromSurface Error: {s}\n", .{sdl2.SDL_GetError()});
+         return 1;
