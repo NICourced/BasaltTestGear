@@ -1,5 +1,4 @@
 spec: sdl2-examples.spec
-tag: v0.1
-dir: .
+tar.gz: .
 copy: mypatch.patch
 copy: worklist
